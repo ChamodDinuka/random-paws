@@ -59,24 +59,14 @@ const reducer = (state = initState, action) => {
                     data: state.imageList.data.concat(action.payload)
                 }
             }
-        // case actions.DELETE_FAVOURITE_IMAGE:
-        //     return {
-        //         ...state,
-        //         imageList: {
-        //             ...state.imageList,
-        //             isloading: false,
-        //             error: action.payload
-        //         }
-        //     }
-        // case actions.GET_FAVOURITE_IMAGES:
-        //     return {
-        //         ...state,
-        //         imageList: {
-        //             ...state.imageList,
-        //             data: action.payload,
-        //             isloading: false,
-        //         }
-        //     }
+        case actions.DELETE_FAVOURITE_IMAGE:
+            return {
+                ...state,
+                imageList: {
+                    ...state.imageList,
+                    data: state.imageList.data.filter(x => x !== action.payload)
+                }
+            }
 
         default:
             return state

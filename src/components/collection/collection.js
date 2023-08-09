@@ -1,26 +1,20 @@
 import React from 'react'
-import Card from '../card/card'
+import CardFavourite from '../card/cardFavourite'
+import { useSelector } from 'react-redux'
 import './collection.css'
 
-function collection() {
-    let links = [
-        "https://random.dog/6f6ea89d-5144-49c8-8f2a-12ba7798b8bf.jpg",
-        "https://random.dog/6f6ea89d-5144-49c8-8f2a-12ba7798b8bf.jpg",
-        "https://random.dog/6f6ea89d-5144-49c8-8f2a-12ba7798b8bf.jpg",
-        "https://random.dog/6f6ea89d-5144-49c8-8f2a-12ba7798b8bf.jpg",
-        "https://random.dog/6f6ea89d-5144-49c8-8f2a-12ba7798b8bf.jpg",
-        "https://random.dog/6f6ea89d-5144-49c8-8f2a-12ba7798b8bf.jpg",
-        "https://random.dog/6f6ea89d-5144-49c8-8f2a-12ba7798b8bf.jpg"
-    ];
+function Collection() {
+    const imageList = useSelector((state) => state.imageList.data)
+    
     return (
         <div className="card-group">
-            {links.map(data => (
+            {imageList && imageList.map(data => (
                 <div className="card-list">
-                    <Card />
+                    <CardFavourite imgUrl={data}/>
                 </div>
             ))}
         </div>
     )
 }
 
-export default collection
+export default Collection
