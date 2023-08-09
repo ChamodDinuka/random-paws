@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getRandomImage } from '../../store/actions'
+import { getRandomImage, addFavouriteImage } from '../../store/actions'
 import './card.css'
 
 function Card() {
@@ -13,6 +13,9 @@ function Card() {
     const refresh = () => {
         getRandomImage()(dispatch)
     }
+    const addFavourite = () => {
+        addFavouriteImage(imageUrl)(dispatch)
+    }
     return (
         <div className="card">
             {!isLoading ?
@@ -20,7 +23,7 @@ function Card() {
                 : "image is loading"}
             <div className="button-group">
                 <button className="secondary" onClick={() => refresh()}>New Image</button>
-                <button className="primary">+ Add Favourite</button>
+                <button className="primary" onClick={() =>addFavourite()}>+ Add Favourite</button>
             </div>
         </div>
     )
