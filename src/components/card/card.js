@@ -23,7 +23,7 @@ function Card() {
                 : "image is loading"}
             <div className="button-group">
                 <button className="secondary" onClick={() => refresh()}>New Image</button>
-                <button className="primary" onClick={() =>addFavourite()}>+ Add Favourite</button>
+                <button className="primary" onClick={() => addFavourite()}>+ Add Favourite</button>
             </div>
         </div>
     )

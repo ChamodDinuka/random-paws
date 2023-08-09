@@ -52,13 +52,11 @@ const reducer = (state = initState, action) => {
             }
         //get favourite images
         case actions.ADD_FAVOURITE_IMAGE:
-            let tempImageList = state.imageList.data
-            tempImageList.push(action.payload)
             return {
                 ...state,
                 imageList: {
                     ...state.imageList,
-                    data: tempImageList 
+                    data: state.imageList.data.concat(action.payload)
                 }
             }
         // case actions.DELETE_FAVOURITE_IMAGE:
