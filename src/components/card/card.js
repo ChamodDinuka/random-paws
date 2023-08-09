@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import {getRandomImage } from '../../store/actions'
 import './card.css'
 
-function card() {
+function Card() {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        getRandomImage()(dispatch)
+    }, [])
+    const image = useSelector((state) => state.randomImage.data)
+
     const url = 'https://random.dog/6f6ea89d-5144-49c8-8f2a-12ba7798b8bf.jpg'
     return (
         <div className="card">
@@ -14,4 +22,4 @@ function card() {
     )
 }
 
-export default card
+export default Card
