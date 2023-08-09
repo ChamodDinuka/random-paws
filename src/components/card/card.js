@@ -1,24 +1,25 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {getRandomImage } from '../../store/actions'
+import { getRandomImage } from '../../store/actions'
 import './card.css'
 
 function Card() {
     const dispatch = useDispatch();
     const imageUrl = useSelector((state) => state.randomImage.data)
-
+    const isLoading = useSelector((state) => state.randomImage.isloading)
     useEffect(() => {
         getRandomImage()(dispatch)
     }, [])
-    const refresh = ()=>{
+    const refresh = () => {
         getRandomImage()(dispatch)
     }
-    const url = 'https://random.dog/6f6ea89d-5144-49c8-8f2a-12ba7798b8bf.jpg'
     return (
         <div className="card">
-            <img src={imageUrl} className="card-img" alt="logo" />
+            {!isLoading ?
+                <img src={imageUrl} className="card-img" alt="logo" />
+                : "image is loading"}
             <div className="button-group">
-                <button className="secondary" onClick={()=>refresh()}>New Image</button>
+                <button className="secondary" onClick={() => refresh()}>New Image</button>
                 <button className="primary">+ Add Favourite</button>
             </div>
         </div>
