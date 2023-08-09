@@ -1,0 +1,36 @@
+.primary {
+    padding: 10px;
+    border-radius: 4px;
+    background-color: dodgerblue;
+    color: white;
+    cursor: pointer;
+}
+
+.secondary {
+    padding: 10px;
+    border-radius: 4px;
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+}
+
+.button-group {
+    display: grid;
+}
+
+.button-group>* {
+    margin: 5px 0;
+}
+
+.card {
+    width: 250px;
+    padding: 20px;
+    background: #282c34;
+    border-radius: 4px;
+}
+
+.card-img {
+    height: 40vmin;
+    width: 100%;
+    pointer-events: none;
+}
