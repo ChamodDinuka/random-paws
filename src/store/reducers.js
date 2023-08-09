@@ -45,6 +45,7 @@ const reducer = (state = initState, action) => {
             return {
                 ...state,
                 randomImage: {
+                    ...state.randomImage,
                     isloading: false,
                     error: null
                 }

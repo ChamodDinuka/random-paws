@@ -5,17 +5,20 @@ import './card.css'
 
 function Card() {
     const dispatch = useDispatch();
+    const imageUrl = useSelector((state) => state.randomImage.data)
+
     useEffect(() => {
         getRandomImage()(dispatch)
     }, [])
-    const image = useSelector((state) => state.randomImage.data)
-
+    const refresh = ()=>{
+        getRandomImage()(dispatch)
+    }
     const url = 'https://random.dog/6f6ea89d-5144-49c8-8f2a-12ba7798b8bf.jpg'
     return (
         <div className="card">
-            <img src={url} className="card-img" alt="logo" />
+            <img src={imageUrl} className="card-img" alt="logo" />
             <div className="button-group">
-                <button className="secondary">New Image</button>
+                <button className="secondary" onClick={()=>refresh()}>New Image</button>
                 <button className="primary">+ Add Favourite</button>
             </div>
         </div>

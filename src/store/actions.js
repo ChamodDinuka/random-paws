@@ -10,10 +10,10 @@ export const getRandomImage = () => async dispatch => {
     };
 
     try {
-        let response = await axios.get('https://random.dog/woof.json', config);
-        dispatch({ 
+        const response = await fetch("https://random.dog/woof.json").then(res => res.json());
+        dispatch({
             type: actions.GET_RANDOM_IMAGE_SUCCESS,
-            payload: response
+            payload: response.url
         });
     } catch (err) {
         dispatch({
@@ -26,21 +26,21 @@ export const getRandomImage = () => async dispatch => {
 };
 
 export const addFavouriteImage = (imageData) => async dispatch => {
-    dispatch({ 
+    dispatch({
         type: actions.ADD_FAVOURITE_IMAGE,
         payload: imageData
     });
 }
 
 export const deleteFavouriteImage = (imageData) => async dispatch => {
-    dispatch({ 
+    dispatch({
         type: actions.DELETE_FAVOURITE_IMAGE,
         payload: imageData
     });
 }
 
 export const getFavouriteImages = () => async dispatch => {
-    dispatch({ 
+    dispatch({
         type: actions.GET_FAVOURITE_IMAGES
     });
 }
