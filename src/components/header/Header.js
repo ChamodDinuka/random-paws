@@ -12,8 +12,8 @@ function Header() {
         <div class="header">
             <a class="logo">RandomPows</a>
             <div class="header-right">
-                <a class="active"  onClick={()=>handleClick('/')}>New Favourite</a>
-                <a  onClick={()=>handleClick('collection')}>My Collection</a>
+                <a  onClick={()=>handleClick('/')} tabIndex={'1'}>New Favourite</a>
+                <a  onClick={()=>handleClick('collection')} tabIndex={'2'}>My Collection</a>
             </div>
         </div>
     )
