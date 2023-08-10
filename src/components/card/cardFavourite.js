@@ -1,12 +1,16 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteFavouriteImage } from '../../store/actions'
+import { deleteFavouriteImage, setAlert } from '../../store/actions'
 import './card.css'
 
 function CardFavourite({ imgUrl }) {
     const dispatch = useDispatch();
     const removeFavourite = () => {
-        deleteFavouriteImage(imgUrl)(dispatch)
+        deleteFavouriteImage(imgUrl)(dispatch);
+        setAlert('Successfully Removed',true)(dispatch);
+        setTimeout(() => {
+            setAlert('',false)(dispatch);
+          }, 3000);
     }
 
     return (

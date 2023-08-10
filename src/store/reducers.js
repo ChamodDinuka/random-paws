@@ -9,6 +9,10 @@ const initState = {
         data: null,
         error: null,
         isloading: false
+    },
+    alert: {
+        message: null,
+        show: false
     }
 }
 
@@ -52,7 +56,7 @@ const reducer = (state = initState, action) => {
             }
         //get favourite images
         case actions.ADD_FAVOURITE_IMAGE:
-            localStorage.setItem('loacalImageList',JSON.stringify(state.imageList.data.concat(action.payload)));
+            localStorage.setItem('loacalImageList', JSON.stringify(state.imageList.data.concat(action.payload)));
             return {
                 ...state,
                 imageList: {
@@ -69,7 +73,15 @@ const reducer = (state = initState, action) => {
                     data: state.imageList.data.filter(x => x !== action.payload)
                 }
             }
-
+        case actions.SET_ALERT:
+            return {
+                ...state,
+                alert: {
+                    ...state.alert,
+                    message: action.payload.message,
+                    show: action.payload.show
+                }
+            }
         default:
             return state
     }

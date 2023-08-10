@@ -38,3 +38,10 @@ export const getFavouriteImages = () => async dispatch => {
         type: actions.GET_FAVOURITE_IMAGES
     });
 }
+
+export const setAlert = (message, show) => async dispatch => {
+    dispatch({
+        type: actions.SET_ALERT,
+        payload: {message,show}
+    });
+}

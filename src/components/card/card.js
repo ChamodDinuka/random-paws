@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getRandomImage, addFavouriteImage } from '../../store/actions'
+import { getRandomImage, addFavouriteImage, setAlert } from '../../store/actions'
 import './card.css'
 
 function Card() {
@@ -10,15 +10,19 @@ function Card() {
     const isLoading = useSelector((state) => state.randomImage.isloading);
 
     useEffect(() => {
-        getRandomImage()(dispatch)
+        getRandomImage()(dispatch);
     }, [])
 
     const refresh = () => {
-        getRandomImage()(dispatch)
+        getRandomImage()(dispatch);
     }
 
     const addFavourite = () => {
-        addFavouriteImage(imageUrl)(dispatch)
+        addFavouriteImage(imageUrl)(dispatch);
+        setAlert('Successfully Added',true)(dispatch);
+        setTimeout(() => {
+            setAlert('',false)(dispatch);
+          }, 3000);
     }
 
     return (
