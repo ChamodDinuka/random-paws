@@ -1,20 +1,17 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
+import { useDispatch } from 'react-redux'
 import { deleteFavouriteImage } from '../../store/actions'
 import './card.css'
 
-function CardFavourite({imgUrl}) {
+function CardFavourite({ imgUrl }) {
     const dispatch = useDispatch();
-    const isLoading = useSelector((state) => state.randomImage.isloading)
     const removeFavourite = () => {
         deleteFavouriteImage(imgUrl)(dispatch)
     }
 
     return (
         <div className="card">
-            {!isLoading ?
-                <img src={imgUrl} className="card-img" alt="logo" />
-                : "image is loading"}
+            <img src={imgUrl} className="card-img" alt="logo" />
             <div className="button-group">
                 <button className="danger" onClick={() => removeFavourite()}>Remove Favourite</button>
             </div>
