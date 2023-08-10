@@ -1,13 +1,7 @@
 import * as actions from './actionTypes';
-const axios = require('axios');
 
 export const getRandomImage = () => async dispatch => {
     dispatch({ type: actions.GET_RANDOM_IMAGE_START });
-    const config = {
-        headers: {
-            "Content-Type": "application/json"
-        }
-    };
 
     try {
         const response = await fetch("https://random.dog/woof.json").then(res => res.json());

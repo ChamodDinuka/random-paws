@@ -2,7 +2,7 @@ import * as actions from './actionTypes'
 
 const initState = {
     imageList: {
-        data: [],
+        data: JSON.parse(localStorage.getItem('loacalImageList')),
         error: null,
     },
     randomImage: {
@@ -52,6 +52,7 @@ const reducer = (state = initState, action) => {
             }
         //get favourite images
         case actions.ADD_FAVOURITE_IMAGE:
+            localStorage.setItem('loacalImageList',JSON.stringify(state.imageList.data.concat(action.payload)));
             return {
                 ...state,
                 imageList: {
@@ -60,6 +61,7 @@ const reducer = (state = initState, action) => {
                 }
             }
         case actions.DELETE_FAVOURITE_IMAGE:
+            localStorage.setItem('loacalImageList', JSON.stringify(state.imageList.data.filter(x => x !== action.payload)));
             return {
                 ...state,
                 imageList: {
